@@ -14,16 +14,13 @@ code {
 
 .nav-link {
   text-decoration: none;
-  color: #000 !important; /* Default text color */
-  transition: color 0.3s ease; /* Smooth transition for color change */
+  color: #000 !important;
+  transition: color 0.3s ease;
 }
-
- 
 
 .nav-link:hover {
-  color: #007bff !important; /* Change color on hover */
+  color: #007bff !important;
 }
-
 
 /* Create a live border effect around the entire Navbar */
 .navbar {
@@ -38,23 +35,22 @@ code {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px; /* Set height to 2px for the bottom border */
-  background: linear-gradient(90deg, transparent, #bb0707, transparent); /* Gradient from left to right */
-  background-size: 200%; /* Make the gradient bigger for smooth animation */
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #bb0707, transparent);
+  background-size: 200%;
   z-index: -1;
-  animation: borderLeftToRight 20s linear infinite; /* Animate background */
+  animation: borderLeftToRight 20s linear infinite;
 }
 
 @keyframes borderLeftToRight {
   0% {
-    background-position: 200% 0; /* Start the gradient off-screen to the right */
+    background-position: 200% 0;
   }
   100% {
-    background-position: -200% 0; /* Move the gradient to the left */
+    background-position: -200% 0;
   }
 }
 
-/* Dropdown menu is hidden by default */
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -63,46 +59,42 @@ code {
   z-index: 1000;
 }
 
-/* Show dropdown menu when parent is hovered */
 .nav-item:hover .dropdown-menu {
   display: block;
 }
 
 /* Doctor */
 .custom-card-img {
-  height: 300px; /* Set the desired height */
-  object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+  height: 300px;
+  object-fit: cover;
 }
-
-
 
 /* FooterComponent.css */
 footer {
   background-color: #343a40;
-}
-footer a {
-  text-decoration: none;
-}
-footer a:hover {
-  text-decoration: underline;
-}
-.social-icons a {
-  font-size: 1.5rem;
-  transition: color 0.3s;
-}
-.social-icons a:hover {
-  color: #007bff;
-}
-footer{
-  background-image: url("D:\Project\HospitalManagementSystem\hmsfrontend\public\images\footer.jpg");
   background-size: cover;
   background-position: center;
   padding-top: 60px;
 }
 
+footer a {
+  text-decoration: none;
+}
 
-.page-title-wrapper{
-  background-image: url("D:\Project\HospitalManagementSystem\hmsfrontend\public\images\header.jpg");
+footer a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+.page-title-wrapper {
   background-size: cover;
   height: 20vh;
 }
@@ -119,38 +111,33 @@ footer{
   padding-top: 50px;
 }
 
-
 .custom-card-text {
-  display: -webkit-box;           /* Required for line clamping */
-  -webkit-line-clamp: 3;          /* Number of lines to show */
-  -webkit-box-orient: vertical;   /* Required for line clamping */
-  overflow: hidden;               /* Hide overflowed text */
-  text-overflow: ellipsis;        /* Add ellipsis (...) */
-  line-clamp: 3;                  /* Standard property, for future support */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 3;
 }
 
-
 /* DepartmentComponents */
-
 .custom-card {
   transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .custom-card:hover {
-  transform: scale(1.08); /* Slightly more enlargement */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); 
+  transform: scale(1.08);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
-
 
 #details-form {
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.75); 
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.75);
   padding: 20px;
   background-color: white;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
-/* DoctorPagination and DoctorComponent*/
-
+/* DoctorPagination and DoctorComponent */
 .slide-enter {
   opacity: 0;
   transform: translateX(100%);

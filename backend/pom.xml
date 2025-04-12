@@ -63,15 +63,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.crud</groupId>
-			<artifactId>crud</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.pro</groupId>
-			<artifactId>pro</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jdbc</artifactId>
+</dependency>
+
 		
 		<dependency>
 			<groupId>org.modelmapper</groupId>
