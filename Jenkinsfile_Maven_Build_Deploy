@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven_Local'  // Make sure this is configured in Jenkins (Global Tool Configuration)
+    }
+
+    parameters {
+        string(name: 'SDLC_ENV', defaultValue: 'Dev', description: 'Select SDLC Environment (Dev/Qa/Prod)')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the Maven Project...'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+
+                // Navigate to your project folder and run Maven build
+                dir("${env.WORKSPACE}/backend") {
+                    sh "pwd"
+                    sh 'mvn clean install -f pom.xml'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                echo "The selected SDLC environment is: ${params.SDLC_ENV}"
+            }
+        }
+
+        stage('DeployToDev') {
+            when {
+                environment name: 'SDLC_ENV', value: 'Dev'
+            }
+            steps {
+                echo 'Deploying to Dev Environment...'
+
+                // Deploy to Tomcat using Tomcat plugin (adjust path and credentials as needed)
+                deploy adapters: [tomcat9(credentialsId: 'Deployer', path: '', url: 'http://98.83.117.251:8080/')], 
+                      contextPath: 'dev-Hospital-Management', 
+                      war: '**/*.war'
+            }
+        }
+
+        stage('DeployToQa') {
+            when {
+                environment name: 'SDLC_ENV', value: 'Qa'
+            }
+            steps {
+                echo 'Deploying to QA Environment...'
+
+                // Deploy to Tomcat using Tomcat plugin (adjust path and credentials as needed)
+                deploy adapters: [tomcat9(credentialsId: 'Deployer', path: '', url: 'http://98.83.117.251:8080/')], 
+                      contextPath: 'qa-Hospital-Management', 
+                      war: '**/*.war'
+            }
+        }
+
+        stage('DeployToProd') {
+            when {
+                environment name: 'SDLC_ENV', value: 'Prod'
+            }
+            steps {
+                echo 'Deploying to Production Environment...'
+
+                // Deploy to Tomcat using Tomcat plugin (adjust path and credentials as needed)
+                deploy adapters: [tomcat9(credentialsId: 'Deployer', path: '', url: 'http://98.83.117.251:8080/')], 
+                      contextPath: 'Prod-Hospital-Management', 
+                      war: '**/*.war'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Archiving WAR file...'
+            archiveArtifacts artifacts: '**/*.war', fingerprint: true
+        }
+    }
+}
+
